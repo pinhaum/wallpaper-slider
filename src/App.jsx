@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import './App.css';
 
 const IMAGES = [
@@ -82,26 +82,27 @@ function Slider() {
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState('next');
   const [animating, setAnimating] = useState(false);
+  const timerRef = useRef(null);
 
-  const goTo = useCallback((next, dir = 'next') => {
+  const goTo = useCallback((nextIndex, dir = 'next') => {
     if (animating) return;
     setDirection(dir);
     setAnimating(true);
-    setTimeout(() => {
-      setIndex(next);
+    timerRef.current = setTimeout(() => {
+      setIndex(nextIndex);
       setAnimating(false);
     }, 180);
   }, [animating]);
 
-  const prev = () => {
-    const next = (index - 1 + IMAGES.length) % IMAGES.length;
-    goTo(next, 'prev');
-  };
+  useEffect(() => () => clearTimeout(timerRef.current), []);
 
-  const next = () => {
-    const next = (index + 1) % IMAGES.length;
-    goTo(next, 'next');
-  };
+  const prev = useCallback(() => {
+    goTo((index - 1 + IMAGES.length) % IMAGES.length, 'prev');
+  }, [index, goTo]);
+
+  const next = useCallback(() => {
+    goTo((index + 1) % IMAGES.length, 'next');
+  }, [index, goTo]);
 
   useEffect(() => {
     const handler = (e) => {
@@ -110,7 +111,7 @@ function Slider() {
     };
     window.addEventListener('keydown', handler);
     return () => window.removeEventListener('keydown', handler);
-  }, [index, animating]);
+  }, [prev, next]);
 
   const img = IMAGES[index];
 
@@ -137,7 +138,14 @@ function Slider() {
           <span className="ctrl-label">anterior</span>
         </button>
 
-        <Dots total={IMAGES.length} current={index} onSelect={(i) => goTo(i, i > index ? 'next' : 'prev')} />
+        <Dots
+          total={IMAGES.length}
+          current={index}
+          onSelect={(i) => {
+            if (i === index) return;
+            goTo(i, i > index ? 'next' : 'prev');
+          }}
+        />
 
         <button className="ctrl-btn" onClick={next} aria-label="Próximo">
           <span className="ctrl-label">próximo</span>

@@ -347,3 +347,20 @@
   .ctrl-label { display: none; }
   .slider-title { font-size: 12px; }
 }
+
+/* ============================================================
+   Acessibilidade — redução de movimento
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .sky-stars,
+  .blink,
+  .anim-next .slider-img,
+  .anim-prev .slider-img {
+    animation: none !important;
+  }
+  .slider-img,
+  .ctrl-btn,
+  .dot-btn {
+    transition: none !important;
+  }
+}

@@ -1,44 +1,33 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import './App.css';
 
-const IMAGES = [
-  {
-    id: 1,
-    src: 'https://picsum.photos/seed/zebes/1200/800',
-    title: 'Zebes',
-    label: '01 / 06',
-  },
-  {
-    id: 2,
-    src: 'https://picsum.photos/seed/aurora/1200/800',
-    title: 'Aurora',
-    label: '02 / 06',
-  },
-  {
-    id: 3,
-    src: 'https://picsum.photos/seed/moonring/1200/800',
-    title: 'Moonring',
-    label: '03 / 06',
-  },
-  {
-    id: 4,
-    src: 'https://picsum.photos/seed/celeste/1200/800',
-    title: 'Celeste',
-    label: '04 / 06',
-  },
-  {
-    id: 5,
-    src: 'https://picsum.photos/seed/norfair/1200/800',
-    title: 'Norfair',
-    label: '05 / 06',
-  },
-  {
-    id: 6,
-    src: 'https://picsum.photos/seed/crateria/1200/800',
-    title: 'Crateria',
-    label: '06 / 06',
-  },
-];
+// Carrega automaticamente todas as imagens da pasta wallpaper
+const wallpaperModules = import.meta.glob('/public/assets/wallpaper/*.{jpg,jpeg,png,webp}', {
+  eager: true,
+  query: '?url',
+  import: 'default'
+});
+
+// Converte para o formato esperado pelo slider
+const IMAGES = Object.keys(wallpaperModules)
+  .map((path) => {
+    const filename = path.split('/').pop();
+    // Remove extensão para usar como título
+    const title = filename.replace(/\.(jpg|jpeg|png|webp)$/i, '');
+    return {
+      path,
+      filename,
+      title,
+      src: `/assets/wallpaper/${filename}`
+    };
+  })
+  .sort((a, b) => a.filename.localeCompare(b.filename))
+  .map((item, index, array) => ({
+    id: index + 1,
+    src: item.src,
+    title: item.title,
+    label: `${String(index + 1).padStart(2, '0')} / ${String(array.length).padStart(2, '0')}`,
+  }));
 
 function Sky() {
   return (

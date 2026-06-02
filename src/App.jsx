@@ -106,23 +106,28 @@ function Dots({ total, current, onSelect }) {
   );
 }
 
+const FADE_HALF = 150;
+
 function Slider() {
   const [index, setIndex] = useState(() =>
     Math.floor(Math.random() * IMAGES.length),
   );
-  const [direction, setDirection] = useState("next");
-  const [animating, setAnimating] = useState(false);
+  const [phase, setPhase] = useState(null); // 'out' | 'in' | null
   const timerRef = useRef(null);
 
+  const animating = phase !== null;
+
   const goTo = useCallback(
-    (nextIndex, dir = "next") => {
+    (nextIndex) => {
       if (animating) return;
-      setDirection(dir);
-      setAnimating(true);
+      setPhase('out');
       timerRef.current = setTimeout(() => {
         setIndex(nextIndex);
-        setAnimating(false);
-      }, 180);
+        setPhase('in');
+        timerRef.current = setTimeout(() => {
+          setPhase(null);
+        }, FADE_HALF);
+      }, FADE_HALF);
     },
     [animating],
   );
@@ -130,11 +135,11 @@ function Slider() {
   useEffect(() => () => clearTimeout(timerRef.current), []);
 
   const prev = useCallback(() => {
-    goTo((index - 1 + IMAGES.length) % IMAGES.length, "prev");
+    goTo((index - 1 + IMAGES.length) % IMAGES.length);
   }, [index, goTo]);
 
   const next = useCallback(() => {
-    goTo((index + 1) % IMAGES.length, "next");
+    goTo((index + 1) % IMAGES.length);
   }, [index, goTo]);
 
   useEffect(() => {
@@ -153,7 +158,7 @@ function Slider() {
       <div className="slider-card scanlines">
         <div
           className={
-            "slider-img-wrap" + (animating ? " anim-" + direction : "")
+            "slider-img-wrap" + (phase ? " anim-" + phase : "")
           }
         >
           <img
@@ -180,7 +185,7 @@ function Slider() {
           current={index}
           onSelect={(i) => {
             if (i === index) return;
-            goTo(i, i > index ? "next" : "prev");
+            goTo(i);
           }}
         />
 

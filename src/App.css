@@ -283,33 +283,33 @@
   transition: opacity 180ms steps(2, end);
 }
 
-/* Slide animation */
-.anim-next .slider-img {
-  animation: slide-in-next 180ms steps(4, end) forwards;
-}
-.anim-prev .slider-img {
-  animation: slide-in-prev 180ms steps(4, end) forwards;
+/* Fade to black animation */
+.anim-out::after,
+.anim-in::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #000;
+  z-index: 2;
+  pointer-events: none;
 }
 
-@keyframes slide-in-next {
-  from {
-    opacity: 0;
-    transform: translateX(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+.anim-out::after {
+  animation: fade-to-black 150ms linear forwards;
 }
-@keyframes slide-in-prev {
-  from {
-    opacity: 0;
-    transform: translateX(-12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+
+.anim-in::after {
+  animation: fade-from-black 150ms linear forwards;
+}
+
+@keyframes fade-to-black {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fade-from-black {
+  from { opacity: 1; }
+  to   { opacity: 0; }
 }
 
 .slider-overlay {
@@ -338,6 +338,10 @@
   color: var(--gcr-paper);
   text-shadow: 2px 2px 0 var(--gcr-ink);
   letter-spacing: 0.04em;
+  max-width: 70%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 /* ============================================================

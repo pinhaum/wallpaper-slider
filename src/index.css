@@ -61,6 +61,8 @@
 
   /* Layout */
   --nav-padding: 14px 32px;
+  --nav-brand-font-size: 13px;
+  --nav-brand-gap: 10px;
   --main-padding: 48px 24px 64px;
 
   /* Slider */
@@ -80,11 +82,17 @@
   --btn-shadow: 5px 5px 0 var(--gcr-ink);
   --btn-shadow-hover: 7px 7px 0 var(--gcr-ink);
   --btn-shadow-active: 2px 2px 0 var(--gcr-ink);
+
+  /* Backgrounds com alpha */
+  --nav-bg: rgba(7, 6, 26, 0.88);
+  --overlay-bg: rgba(7, 6, 26, 0.85);
 }
 
 @media (max-width: 640px) {
   :root {
     --nav-padding: 10px 14px;
+    --nav-brand-font-size: 10px;
+    --nav-brand-gap: 7px;
     --main-padding: 20px 10px 36px;
     --slider-gap: 16px;
     --card-border: 3px;
@@ -94,6 +102,7 @@
     --fs-slider-counter: 10px;
     --dot-size: 9px;
     --btn-shadow: 3px 3px 0 var(--gcr-ink);
+    --btn-shadow-hover: 4px 4px 0 var(--gcr-ink);
     --btn-shadow-active: 1px 1px 0 var(--gcr-ink);
   }
 }

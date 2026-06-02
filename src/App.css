@@ -312,6 +312,16 @@
   transform: scale(1.25);
 }
 
+.dot-btn.dot-small {
+  transform: scale(0.65);
+  opacity: 0.5;
+}
+
+.dot-btn.dot-edge {
+  transform: scale(0.5);
+  opacity: 0.3;
+}
+
 /* ============================================================
    Footer
    ============================================================ */

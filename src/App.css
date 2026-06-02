@@ -171,7 +171,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 14px 32px;
+  padding: var(--nav-padding);
   background: rgba(7, 6, 26, 0.88);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
@@ -227,7 +227,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 48px 24px 64px;
+  padding: var(--main-padding);
 }
 
 /* ============================================================
@@ -237,7 +237,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 32px;
+  gap: var(--slider-gap);
   width: 100%;
   max-width: 960px;
 }
@@ -245,8 +245,8 @@
 .slider-card {
   position: relative;
   width: 100%;
-  border: 5px solid var(--gcr-ink);
-  box-shadow: 10px 10px 0 var(--gcr-ink);
+  border: var(--card-border) solid var(--gcr-ink);
+  box-shadow: var(--card-shadow);
   overflow: hidden;
   background: var(--bg-inset);
 }
@@ -294,11 +294,11 @@
 }
 
 .anim-out::after {
-  animation: fade-to-black 150ms linear forwards;
+  animation: fade-to-black var(--t-fade) linear forwards;
 }
 
 .anim-in::after {
-  animation: fade-from-black 150ms linear forwards;
+  animation: fade-from-black var(--t-fade) linear forwards;
 }
 
 @keyframes fade-to-black {
@@ -328,20 +328,20 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  padding: 20px 24px 16px;
+  padding: var(--overlay-padding);
   background: linear-gradient(0deg, rgba(7, 6, 26, 0.85) 0%, transparent 100%);
 }
 
 .slider-counter {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--fs-slider-counter);
   color: var(--gcr-aurora);
   letter-spacing: 0.1em;
 }
 
 .slider-title {
   font-family: var(--font-display);
-  font-size: 16px;
+  font-size: var(--fs-slider-title);
   color: var(--gcr-paper);
   text-shadow: 2px 2px 0 var(--gcr-ink);
   letter-spacing: 0.04em;
@@ -379,34 +379,28 @@
   background: var(--gcr-paper);
   color: var(--gcr-ink);
   border: 3px solid var(--gcr-ink);
-  box-shadow: 5px 5px 0 var(--gcr-ink);
+  box-shadow: var(--btn-shadow);
   transition:
     transform var(--t-fast) var(--ease-step),
     box-shadow var(--t-fast) var(--ease-step);
   cursor: pointer;
-  min-width: 112px;
   justify-content: center;
 }
 
 .ctrl-btn:hover {
   transform: translate(-2px, -2px);
-  box-shadow: 7px 7px 0 var(--gcr-ink);
+  box-shadow: var(--btn-shadow-hover);
   background: var(--gcr-paper-soft);
 }
 
 .ctrl-btn:active {
   transform: translate(3px, 3px);
-  box-shadow: 2px 2px 0 var(--gcr-ink);
+  box-shadow: var(--btn-shadow-active);
 }
 
 .ctrl-arrow {
   font-family: var(--font-display);
   font-size: 10px;
-}
-
-.ctrl-label {
-  font-family: var(--font-body);
-  font-size: 15px;
 }
 
 /* ============================================================
@@ -421,8 +415,8 @@
 }
 
 .dot-btn {
-  width: 12px;
-  height: 12px;
+  width: var(--dot-size);
+  height: var(--dot-size);
   background: var(--gcr-dusk);
   border: 2px solid var(--gcr-ink);
   cursor: pointer;
@@ -470,27 +464,12 @@
   color: var(--gcr-coral);
 }
 
-/* ============================================================
-   Float animation (shared)
-   ============================================================ */
-@keyframes float-y {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-4px);
-  }
-}
 
 /* ============================================================
    Responsive
    ============================================================ */
 @media (max-width: 640px) {
   /* Nav */
-  .nav {
-    padding: 10px 14px;
-  }
   .nav-brand {
     font-size: 10px;
     gap: 7px;
@@ -503,33 +482,8 @@
     display: none;
   }
 
-  /* Main */
-  .main {
-    padding: 20px 10px 36px;
-  }
-
-  /* Slider section */
-  .slider-section {
-    gap: 16px;
-  }
-
-  /* Card */
-  .slider-card {
-    border-width: 3px;
-    box-shadow: 6px 6px 0 var(--gcr-ink);
-  }
-
-  /* Overlay */
-  .slider-overlay {
-    padding: 14px 14px 10px;
-  }
-
-  .slider-counter {
-    font-size: 10px;
-  }
-
+  /* Slider title — max-width mobile */
   .slider-title {
-    font-size: 11px;
     max-width: 60%;
   }
 
@@ -552,12 +506,6 @@
     font-size: 9px;
   }
 
-  /* Dots */
-  .dot-btn {
-    width: 9px;
-    height: 9px;
-  }
-
   /* Footer */
   .footer {
     padding: 16px;
@@ -570,9 +518,7 @@
    ============================================================ */
 @media (prefers-reduced-motion: reduce) {
   .sky-stars,
-  .blink,
-  .anim-next .slider-img,
-  .anim-prev .slider-img {
+  .blink {
     animation: none !important;
   }
   .slider-img,

@@ -56,6 +56,43 @@
   --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
   --t-fast: 120ms;
   --t-base: 240ms;
+  --t-fade: 150ms;
+
+  /* Layout */
+  --nav-padding: 14px 32px;
+  --main-padding: 48px 24px 64px;
+
+  /* Slider */
+  --slider-gap: 32px;
+  --card-border: 5px;
+  --card-shadow: 10px 10px 0 var(--gcr-ink);
+  --overlay-padding: 20px 24px 16px;
+
+  /* Typography — slider */
+  --fs-slider-title: 16px;
+  --fs-slider-counter: 11px;
+
+  /* Dots */
+  --dot-size: 12px;
+
+  /* Controls */
+  --btn-shadow: 5px 5px 0 var(--gcr-ink);
+  --btn-shadow-hover: 7px 7px 0 var(--gcr-ink);
+  --btn-shadow-active: 2px 2px 0 var(--gcr-ink);
+}
+
+@media (max-width: 640px) {
+  :root {
+    --nav-padding: 10px 14px;
+    --main-padding: 20px 10px 36px;
+    --slider-gap: 16px;
+    --card-border: 3px;
+    --card-shadow: 6px 6px 0 var(--gcr-ink);
+    --overlay-padding: 14px 14px 10px;
+    --fs-slider-title: 11px;
+    --fs-slider-counter: 10px;
+    --dot-size: 9px;
+  }
 }
 
 * {

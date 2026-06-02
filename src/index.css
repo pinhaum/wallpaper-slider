@@ -8,6 +8,7 @@
   --gcr-night: #0d0c25;
   --gcr-dusk: #1a1742;
   --gcr-dawn: #2d2766;
+  --gcr-deep: #1a0f3a;
 
   --gcr-aurora: #5beaff;
   --gcr-aurora-dim: #2596b8;
@@ -56,7 +57,7 @@
   --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
   --t-fast: 120ms;
   --t-base: 240ms;
-  --t-fade: 150ms;
+  --t-fade: 150ms; /* deve ser igual a FADE_HALF em Slider.jsx */
 
   /* Layout */
   --nav-padding: 14px 32px;
@@ -92,6 +93,8 @@
     --fs-slider-title: 11px;
     --fs-slider-counter: 10px;
     --dot-size: 9px;
+    --btn-shadow: 3px 3px 0 var(--gcr-ink);
+    --btn-shadow-active: 1px 1px 0 var(--gcr-ink);
   }
 }
 
@@ -114,9 +117,6 @@ body {
   min-height: 100vh;
 }
 
-img {
-  image-rendering: pixelated;
-}
 button {
   background: none;
   border: none;

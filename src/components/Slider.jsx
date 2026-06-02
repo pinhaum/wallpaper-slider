@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import IMAGES from "../data/images.js";
 import Dots from "./Dots.jsx";
 
-const FADE_HALF = 150;
+const FADE_HALF = 150; // deve ser igual a --t-fade em index.css
 
 export default function Slider() {
   const [index, setIndex] = useState(() =>

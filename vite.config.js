@@ -22,6 +22,18 @@ function wallpaperListPlugin() {
         return `export default ${JSON.stringify(files)}`;
       }
     },
+    configureServer(server) {
+      const dir = path.resolve('public/assets/wallpaper');
+      if (!fs.existsSync(dir)) return;
+      server.watcher.add(dir);
+      server.watcher.on('change', (file) => {
+        if (file.startsWith(dir)) {
+          const mod = server.moduleGraph.getModuleById('\0virtual:wallpapers');
+          if (mod) server.moduleGraph.invalidateModule(mod);
+          server.ws.send({ type: 'full-reload' });
+        }
+      });
+    },
   };
 }
 

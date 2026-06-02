@@ -52,7 +52,7 @@
     180deg,
     var(--gcr-void) 0%,
     var(--gcr-night) 50%,
-    #1a0f3a 100%
+    var(--gcr-deep) 100%
   );
 }
 
@@ -488,16 +488,10 @@
   }
 
   /* Controls */
-  .slider-controls {
-    justify-content: space-between;
-    width: 100%;
-  }
-
   .ctrl-btn--mobile {
     display: inline-flex;
     min-width: unset;
     padding: 8px 20px;
-    box-shadow: 3px 3px 0 var(--gcr-ink);
     border-width: 2px;
     flex-shrink: 0;
   }

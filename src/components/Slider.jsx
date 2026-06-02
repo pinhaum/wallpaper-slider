@@ -7,24 +7,28 @@ const FADE_HALF = 150;
 export default function Slider() {
   const [index, setIndex] = useState(() => Math.floor(Math.random() * IMAGES.length));
   const [phase, setPhase] = useState(null);
-  const timerRef = useRef(null);
+  const outerTimerRef = useRef(null);
+  const innerTimerRef = useRef(null);
+  const lockRef = useRef(false);
 
-  const animating = phase !== null;
-
-  const goTo = useCallback(
-    (nextIndex) => {
-      if (animating) return;
-      setPhase("out");
-      timerRef.current = setTimeout(() => {
-        setIndex(nextIndex);
-        setPhase("in");
-        timerRef.current = setTimeout(() => setPhase(null), FADE_HALF);
+  const goTo = useCallback((nextIndex) => {
+    if (lockRef.current) return;
+    lockRef.current = true;
+    setPhase("out");
+    outerTimerRef.current = setTimeout(() => {
+      setIndex(nextIndex);
+      setPhase("in");
+      innerTimerRef.current = setTimeout(() => {
+        setPhase(null);
+        lockRef.current = false;
       }, FADE_HALF);
-    },
-    [animating],
-  );
+    }, FADE_HALF);
+  }, []);
 
-  useEffect(() => () => clearTimeout(timerRef.current), []);
+  useEffect(() => () => {
+    clearTimeout(outerTimerRef.current);
+    clearTimeout(innerTimerRef.current);
+  }, []);
 
   const prev = useCallback(() => {
     goTo((index - 1 + IMAGES.length) % IMAGES.length);

@@ -280,7 +280,6 @@
   object-fit: cover;
   display: block;
   image-rendering: auto;
-  transition: opacity 180ms steps(2, end);
 }
 
 /* Fade to black animation */
@@ -317,7 +316,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 2;
+  z-index: 3;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;

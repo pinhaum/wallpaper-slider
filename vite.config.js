@@ -12,6 +12,10 @@ function wallpaperListPlugin() {
     load(id) {
       if (id === '\0virtual:wallpapers') {
         const dir = path.resolve('public/assets/wallpaper');
+        if (!fs.existsSync(dir)) {
+          console.warn('[wallpaper-list] pasta não encontrada:', dir);
+          return 'export default []';
+        }
         const files = fs.readdirSync(dir)
           .filter(f => /\.(jpg|jpeg|png|webp)$/i.test(f))
           .sort((a, b) => a.localeCompare(b));

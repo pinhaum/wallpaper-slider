@@ -4,62 +4,68 @@
    gcrepho Design System v2 — Twilight
    ============================================================ */
 :root {
-  --gcr-void:        #07061a;
-  --gcr-night:       #0d0c25;
-  --gcr-dusk:        #1a1742;
-  --gcr-dawn:        #2d2766;
+  --gcr-void: #07061a;
+  --gcr-night: #0d0c25;
+  --gcr-dusk: #1a1742;
+  --gcr-dawn: #2d2766;
 
-  --gcr-aurora:      #5beaff;
-  --gcr-aurora-dim:  #2596b8;
-  --gcr-coral:       #ff5577;
-  --gcr-coral-hot:   #ff3864;
-  --gcr-moon:        #ffd166;
-  --gcr-nebula:      #b794ff;
-  --gcr-spark:       #7cff9a;
-  --gcr-paper:       #f5ead0;
-  --gcr-paper-soft:  #d9cfb3;
-  --gcr-paper-mute:  #8b8474;
-  --gcr-ink:         #000000;
+  --gcr-aurora: #5beaff;
+  --gcr-aurora-dim: #2596b8;
+  --gcr-coral: #ff5577;
+  --gcr-coral-hot: #ff3864;
+  --gcr-moon: #ffd166;
+  --gcr-nebula: #b794ff;
+  --gcr-spark: #7cff9a;
+  --gcr-paper: #f5ead0;
+  --gcr-paper-soft: #d9cfb3;
+  --gcr-paper-mute: #8b8474;
+  --gcr-ink: #000000;
 
-  --bg-base:         var(--gcr-night);
-  --bg-elevated:     var(--gcr-dusk);
-  --bg-hover:        var(--gcr-dawn);
-  --bg-inset:        var(--gcr-void);
+  --bg-base: var(--gcr-night);
+  --bg-elevated: var(--gcr-dusk);
+  --bg-hover: var(--gcr-dawn);
+  --bg-inset: var(--gcr-void);
 
-  --fg-1:            var(--gcr-paper);
-  --fg-2:            var(--gcr-paper-soft);
-  --fg-muted:        var(--gcr-paper-mute);
+  --fg-1: var(--gcr-paper);
+  --fg-2: var(--gcr-paper-soft);
+  --fg-muted: var(--gcr-paper-mute);
 
-  --accent:          var(--gcr-coral);
-  --accent-hover:    var(--gcr-coral-hot);
-  --energy:          var(--gcr-aurora);
-  --energy-warm:     var(--gcr-moon);
+  --accent: var(--gcr-coral);
+  --accent-hover: var(--gcr-coral-hot);
+  --energy: var(--gcr-aurora);
+  --energy-warm: var(--gcr-moon);
 
-  --shadow-hard:     4px 4px 0 var(--gcr-ink);
-  --shadow-hard-lg:  8px 8px 0 var(--gcr-ink);
-  --shadow-press:    2px 2px 0 var(--gcr-ink);
+  --shadow-hard: 4px 4px 0 var(--gcr-ink);
+  --shadow-hard-lg: 8px 8px 0 var(--gcr-ink);
+  --shadow-press: 2px 2px 0 var(--gcr-ink);
 
-  --font-display:  'Press Start 2P', 'Courier New', monospace;
-  --font-body:     'Pixelify Sans', 'Press Start 2P', sans-serif;
-  --font-mono:     'Fira Code', 'Courier New', monospace;
+  --font-display: "Press Start 2P", "Courier New", monospace;
+  --font-body: "Pixelify Sans", "Press Start 2P", sans-serif;
+  --font-mono: "Fira Code", "Courier New", monospace;
 
-  --fs-display:    44px;
-  --fs-h1:         32px;
-  --fs-h2:         22px;
-  --fs-h3:         16px;
-  --fs-body:       19px;
-  --fs-small:      16px;
-  --fs-tiny:       13px;
+  --fs-display: 44px;
+  --fs-h1: 32px;
+  --fs-h2: 22px;
+  --fs-h3: 16px;
+  --fs-body: 19px;
+  --fs-small: 16px;
+  --fs-tiny: 13px;
 
-  --ease-step:    steps(2, end);
-  --ease-step-4:  steps(4, end);
-  --ease-out:     cubic-bezier(0.2, 0.8, 0.2, 1);
-  --t-fast:       120ms;
-  --t-base:       240ms;
+  --ease-step: steps(2, end);
+  --ease-step-4: steps(4, end);
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --t-fast: 120ms;
+  --t-base: 240ms;
 }
 
-* { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
 
 body {
   background: var(--bg-base);
@@ -71,5 +77,14 @@ body {
   min-height: 100vh;
 }
 
-img { image-rendering: pixelated; }
-button { background: none; border: none; padding: 0; font: inherit; color: inherit; cursor: pointer; }
+img {
+  image-rendering: pixelated;
+}
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}

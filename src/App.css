@@ -11,27 +11,33 @@
 
 /* Scanline overlay global */
 .app::before {
-  content: '';
-  position: fixed; inset: 0;
+  content: "";
+  position: fixed;
+  inset: 0;
   pointer-events: none;
   z-index: 999;
   background: repeating-linear-gradient(
     0deg,
-    rgba(0,0,0,0) 0,
-    rgba(0,0,0,0) 2px,
-    rgba(255,255,255,0.018) 2px,
-    rgba(255,255,255,0.018) 3px
+    rgba(0, 0, 0, 0) 0,
+    rgba(0, 0, 0, 0) 2px,
+    rgba(255, 255, 255, 0.018) 2px,
+    rgba(255, 255, 255, 0.018) 3px
   );
 }
 
 /* Grain 32-bit */
 .app::after {
-  content: '';
-  position: fixed; inset: 0;
+  content: "";
+  position: fixed;
+  inset: 0;
   pointer-events: none;
   z-index: 998;
   opacity: 0.04;
-  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,1) 0.5px, transparent 1px);
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(255, 255, 255, 1) 0.5px,
+    transparent 1px
+  );
   background-size: 3px 3px;
 }
 
@@ -39,55 +45,128 @@
    Background layers
    ============================================================ */
 .sky {
-  position: fixed; inset: 0;
+  position: fixed;
+  inset: 0;
   z-index: -2;
-  background: linear-gradient(180deg, var(--gcr-void) 0%, var(--gcr-night) 50%, #1a0f3a 100%);
+  background: linear-gradient(
+    180deg,
+    var(--gcr-void) 0%,
+    var(--gcr-night) 50%,
+    #1a0f3a 100%
+  );
 }
 
 .sky-stars {
-  position: fixed; inset: 0;
+  position: fixed;
+  inset: 0;
   z-index: -1;
   pointer-events: none;
   background-image:
-    radial-gradient(1px 1px at 5% 10%,  var(--gcr-paper) 100%, transparent 100%),
-    radial-gradient(1px 1px at 14% 65%, var(--gcr-paper-soft) 100%, transparent 100%),
-    radial-gradient(2px 2px at 22% 28%, var(--gcr-aurora) 100%, transparent 100%),
-    radial-gradient(1px 1px at 31% 88%, var(--gcr-paper) 100%, transparent 100%),
-    radial-gradient(1px 1px at 39% 41%, var(--gcr-paper-soft) 100%, transparent 100%),
+    radial-gradient(1px 1px at 5% 10%, var(--gcr-paper) 100%, transparent 100%),
+    radial-gradient(
+      1px 1px at 14% 65%,
+      var(--gcr-paper-soft) 100%,
+      transparent 100%
+    ),
+    radial-gradient(
+      2px 2px at 22% 28%,
+      var(--gcr-aurora) 100%,
+      transparent 100%
+    ),
+    radial-gradient(
+      1px 1px at 31% 88%,
+      var(--gcr-paper) 100%,
+      transparent 100%
+    ),
+    radial-gradient(
+      1px 1px at 39% 41%,
+      var(--gcr-paper-soft) 100%,
+      transparent 100%
+    ),
     radial-gradient(2px 2px at 47% 71%, var(--gcr-moon) 100%, transparent 100%),
-    radial-gradient(1px 1px at 56% 14%, var(--gcr-paper) 100%, transparent 100%),
-    radial-gradient(1px 1px at 64% 56%, var(--gcr-paper-soft) 100%, transparent 100%),
-    radial-gradient(2px 2px at 71% 33%, var(--gcr-nebula) 100%, transparent 100%),
-    radial-gradient(1px 1px at 79% 79%, var(--gcr-paper) 100%, transparent 100%),
-    radial-gradient(1px 1px at 87% 21%, var(--gcr-paper-soft) 100%, transparent 100%),
-    radial-gradient(1px 1px at 94% 60%, var(--gcr-paper) 100%, transparent 100%),
-    radial-gradient(2px 2px at 9% 45%,  var(--gcr-aurora-dim) 100%, transparent 100%),
-    radial-gradient(1px 1px at 42% 92%, var(--gcr-paper) 100%, transparent 100%),
-    radial-gradient(1px 1px at 67% 8%,  var(--gcr-moon) 100%, transparent 100%);
+    radial-gradient(
+      1px 1px at 56% 14%,
+      var(--gcr-paper) 100%,
+      transparent 100%
+    ),
+    radial-gradient(
+      1px 1px at 64% 56%,
+      var(--gcr-paper-soft) 100%,
+      transparent 100%
+    ),
+    radial-gradient(
+      2px 2px at 71% 33%,
+      var(--gcr-nebula) 100%,
+      transparent 100%
+    ),
+    radial-gradient(
+      1px 1px at 79% 79%,
+      var(--gcr-paper) 100%,
+      transparent 100%
+    ),
+    radial-gradient(
+      1px 1px at 87% 21%,
+      var(--gcr-paper-soft) 100%,
+      transparent 100%
+    ),
+    radial-gradient(
+      1px 1px at 94% 60%,
+      var(--gcr-paper) 100%,
+      transparent 100%
+    ),
+    radial-gradient(
+      2px 2px at 9% 45%,
+      var(--gcr-aurora-dim) 100%,
+      transparent 100%
+    ),
+    radial-gradient(
+      1px 1px at 42% 92%,
+      var(--gcr-paper) 100%,
+      transparent 100%
+    ),
+    radial-gradient(1px 1px at 67% 8%, var(--gcr-moon) 100%, transparent 100%);
   background-size: 100% 100%;
   animation: starfield-pan 60s linear infinite;
 }
 
 @keyframes starfield-pan {
-  0%   { background-position: 0% 0%; }
-  100% { background-position: -50px -30px; }
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: -50px -30px;
+  }
 }
 
 .aurora-fog {
-  position: fixed; inset: 0;
+  position: fixed;
+  inset: 0;
   pointer-events: none;
   z-index: -1;
   background:
-    radial-gradient(ellipse 800px 400px at 80% 20%, rgba(255, 209, 102, 0.07) 0%, transparent 50%),
-    radial-gradient(ellipse 600px 300px at 15% 80%, rgba(183, 148, 255, 0.09) 0%, transparent 50%),
-    radial-gradient(ellipse 700px 350px at 50% 50%, rgba(91, 234, 255, 0.05) 0%, transparent 60%);
+    radial-gradient(
+      ellipse 800px 400px at 80% 20%,
+      rgba(255, 209, 102, 0.07) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse 600px 300px at 15% 80%,
+      rgba(183, 148, 255, 0.09) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse 700px 350px at 50% 50%,
+      rgba(91, 234, 255, 0.05) 0%,
+      transparent 60%
+    );
 }
 
 /* ============================================================
    Nav
    ============================================================ */
 .nav {
-  position: sticky; top: 0;
+  position: sticky;
+  top: 0;
   z-index: 100;
   display: flex;
   justify-content: space-between;
@@ -110,9 +189,13 @@
   letter-spacing: 0.05em;
 }
 
-.nav-brand img { image-rendering: pixelated; }
+.nav-brand img {
+  image-rendering: pixelated;
+}
 
-.nav-brand .dot { color: var(--gcr-coral); }
+.nav-brand .dot {
+  color: var(--gcr-coral);
+}
 
 .cursor {
   color: var(--gcr-aurora);
@@ -120,8 +203,14 @@
   font-size: 13px;
 }
 
-.blink { animation: blink 1.2s steps(2, end) infinite; }
-@keyframes blink { 50% { opacity: 0; } }
+.blink {
+  animation: blink 1.2s steps(2, end) infinite;
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
 
 .nav-label {
   font-family: var(--font-mono);
@@ -164,16 +253,17 @@
 
 /* Scanlines effect on card */
 .scanlines::after {
-  content: '';
-  position: absolute; inset: 0;
+  content: "";
+  position: absolute;
+  inset: 0;
   pointer-events: none;
   z-index: 3;
   background: repeating-linear-gradient(
     0deg,
-    rgba(0,0,0,0) 0,
-    rgba(0,0,0,0) 3px,
-    rgba(0,0,0,0.1) 3px,
-    rgba(0,0,0,0.1) 4px
+    rgba(0, 0, 0, 0) 0,
+    rgba(0, 0, 0, 0) 3px,
+    rgba(0, 0, 0, 0.1) 3px,
+    rgba(0, 0, 0, 0.1) 4px
   );
 }
 
@@ -194,27 +284,45 @@
 }
 
 /* Slide animation */
-.anim-next .slider-img  { animation: slide-in-next  180ms steps(4, end) forwards; }
-.anim-prev .slider-img  { animation: slide-in-prev  180ms steps(4, end) forwards; }
+.anim-next .slider-img {
+  animation: slide-in-next 180ms steps(4, end) forwards;
+}
+.anim-prev .slider-img {
+  animation: slide-in-prev 180ms steps(4, end) forwards;
+}
 
 @keyframes slide-in-next {
-  from { opacity: 0; transform: translateX(12px); }
-  to   { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 @keyframes slide-in-prev {
-  from { opacity: 0; transform: translateX(-12px); }
-  to   { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .slider-overlay {
   position: absolute;
-  bottom: 0; left: 0; right: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   z-index: 2;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   padding: 20px 24px 16px;
-  background: linear-gradient(0deg, rgba(7,6,26,0.85) 0%, transparent 100%);
+  background: linear-gradient(0deg, rgba(7, 6, 26, 0.85) 0%, transparent 100%);
 }
 
 .slider-counter {
@@ -256,7 +364,9 @@
   color: var(--gcr-ink);
   border: 3px solid var(--gcr-ink);
   box-shadow: 5px 5px 0 var(--gcr-ink);
-  transition: transform var(--t-fast) var(--ease-step), box-shadow var(--t-fast) var(--ease-step);
+  transition:
+    transform var(--t-fast) var(--ease-step),
+    box-shadow var(--t-fast) var(--ease-step);
   cursor: pointer;
   min-width: 140px;
   justify-content: center;
@@ -300,7 +410,9 @@
   background: var(--gcr-dusk);
   border: 2px solid var(--gcr-ink);
   cursor: pointer;
-  transition: background var(--t-fast) steps(2, end), transform var(--t-fast) steps(2, end);
+  transition:
+    background var(--t-fast) steps(2, end),
+    transform var(--t-fast) steps(2, end);
 }
 
 .dot-btn:hover {
@@ -335,27 +447,49 @@
   color: var(--fg-muted);
 }
 
-.footer p { margin: 4px 0; }
-.footer .heart { color: var(--gcr-coral); }
+.footer p {
+  margin: 4px 0;
+}
+.footer .heart {
+  color: var(--gcr-coral);
+}
 
 /* ============================================================
    Float animation (shared)
    ============================================================ */
 @keyframes float-y {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-4px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
 }
 
 /* ============================================================
    Responsive
    ============================================================ */
 @media (max-width: 640px) {
-  .nav { padding: 12px 16px; }
-  .nav-brand { font-size: 10px; }
-  .nav-label { display: none; }
-  .ctrl-btn { min-width: 100px; padding: 8px 12px; }
-  .ctrl-label { display: none; }
-  .slider-title { font-size: 12px; }
+  .nav {
+    padding: 12px 16px;
+  }
+  .nav-brand {
+    font-size: 10px;
+  }
+  .nav-label {
+    display: none;
+  }
+  .ctrl-btn {
+    min-width: 100px;
+    padding: 8px 12px;
+  }
+  .ctrl-label {
+    display: none;
+  }
+  .slider-title {
+    font-size: 12px;
+  }
 }
 
 /* ============================================================

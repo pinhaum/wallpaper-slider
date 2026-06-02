@@ -285,7 +285,7 @@
 /* Fade to black animation */
 .anim-out::after,
 .anim-in::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background: #000;
@@ -302,13 +302,21 @@
 }
 
 @keyframes fade-to-black {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fade-from-black {
-  from { opacity: 1; }
-  to   { opacity: 0; }
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 .slider-overlay {
@@ -343,6 +351,11 @@
   text-overflow: ellipsis;
 }
 
+/* Botões mobile (ocultos no desktop) */
+.ctrl-btn--mobile {
+  display: none;
+}
+
 /* ============================================================
    Controls
    ============================================================ */
@@ -371,7 +384,7 @@
     transform var(--t-fast) var(--ease-step),
     box-shadow var(--t-fast) var(--ease-step);
   cursor: pointer;
-  min-width: 140px;
+  min-width: 112px;
   justify-content: center;
 }
 
@@ -474,24 +487,81 @@
    Responsive
    ============================================================ */
 @media (max-width: 640px) {
+  /* Nav */
   .nav {
-    padding: 12px 16px;
+    padding: 10px 14px;
   }
   .nav-brand {
     font-size: 10px;
+    gap: 7px;
+  }
+  .nav-brand img {
+    width: 20px;
+    height: 20px;
   }
   .nav-label {
     display: none;
   }
-  .ctrl-btn {
-    min-width: 100px;
-    padding: 8px 12px;
+
+  /* Main */
+  .main {
+    padding: 20px 10px 36px;
   }
-  .ctrl-label {
-    display: none;
+
+  /* Slider section */
+  .slider-section {
+    gap: 16px;
   }
+
+  /* Card */
+  .slider-card {
+    border-width: 3px;
+    box-shadow: 6px 6px 0 var(--gcr-ink);
+  }
+
+  /* Overlay */
+  .slider-overlay {
+    padding: 14px 14px 10px;
+  }
+
+  .slider-counter {
+    font-size: 10px;
+  }
+
   .slider-title {
-    font-size: 12px;
+    font-size: 11px;
+    max-width: 60%;
+  }
+
+  /* Controls */
+  .slider-controls {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .ctrl-btn--mobile {
+    display: inline-flex;
+    min-width: unset;
+    padding: 8px 20px;
+    box-shadow: 3px 3px 0 var(--gcr-ink);
+    border-width: 2px;
+    flex-shrink: 0;
+  }
+
+  .ctrl-btn--mobile .ctrl-arrow {
+    font-size: 9px;
+  }
+
+  /* Dots */
+  .dot-btn {
+    width: 9px;
+    height: 9px;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 16px;
+    font-size: 11px;
   }
 }
 

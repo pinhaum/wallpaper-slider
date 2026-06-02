@@ -5,7 +5,9 @@ import Dots from "./Dots.jsx";
 const FADE_HALF = 150;
 
 export default function Slider() {
-  const [index, setIndex] = useState(() => Math.floor(Math.random() * IMAGES.length));
+  const [index, setIndex] = useState(() =>
+    Math.floor(Math.random() * IMAGES.length),
+  );
   const [phase, setPhase] = useState(null);
   const outerTimerRef = useRef(null);
   const innerTimerRef = useRef(null);
@@ -25,10 +27,13 @@ export default function Slider() {
     }, FADE_HALF);
   }, []);
 
-  useEffect(() => () => {
-    clearTimeout(outerTimerRef.current);
-    clearTimeout(innerTimerRef.current);
-  }, []);
+  useEffect(
+    () => () => {
+      clearTimeout(outerTimerRef.current);
+      clearTimeout(innerTimerRef.current);
+    },
+    [],
+  );
 
   const prev = useCallback(() => {
     goTo((index - 1 + IMAGES.length) % IMAGES.length);
@@ -53,7 +58,12 @@ export default function Slider() {
     <section className="slider-section">
       <div className="slider-card scanlines">
         <div className={"slider-img-wrap" + (phase ? " anim-" + phase : "")}>
-          <img key={img.id} src={img.src} alt={img.title} className="slider-img" />
+          <img
+            key={img.id}
+            src={img.src}
+            alt={img.title}
+            className="slider-img"
+          />
         </div>
         <div className="slider-overlay">
           <span className="slider-counter">{img.label}</span>
@@ -62,19 +72,25 @@ export default function Slider() {
       </div>
 
       <div className="slider-controls">
-        <button className="ctrl-btn" onClick={prev} aria-label="Anterior">
+        <button
+          className="ctrl-btn ctrl-btn--mobile"
+          onClick={prev}
+          aria-label="Anterior"
+        >
           <span className="ctrl-arrow">◀</span>
-          <span className="ctrl-label">anterior</span>
         </button>
-
         <Dots
           total={IMAGES.length}
           current={index}
-          onSelect={(i) => { if (i !== index) goTo(i); }}
+          onSelect={(i) => {
+            if (i !== index) goTo(i);
+          }}
         />
-
-        <button className="ctrl-btn" onClick={next} aria-label="Próximo">
-          <span className="ctrl-label">próximo</span>
+        <button
+          className="ctrl-btn ctrl-btn--mobile"
+          onClick={next}
+          aria-label="Próximo"
+        >
           <span className="ctrl-arrow">▶</span>
         </button>
       </div>

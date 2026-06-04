@@ -53,10 +53,9 @@ export default function Slider() {
     return () => window.removeEventListener("keydown", handler);
   }, [prev, next]);
 
-  const autoRef = useRef(null);
   useEffect(() => {
-    autoRef.current = setTimeout(() => next(), AUTO_ADVANCE_MS);
-    return () => clearTimeout(autoRef.current);
+    const timerId = setTimeout(() => next(), AUTO_ADVANCE_MS + FADE_HALF);
+    return () => clearTimeout(timerId);
   }, [index, next]);
 
   const img = IMAGES[index];
@@ -79,7 +78,7 @@ export default function Slider() {
         <div
           key={index}
           className="slider-timer-bar"
-          style={{ "--auto-ms": `${AUTO_ADVANCE_MS}ms` }}
+          style={{ "--auto-ms": `${AUTO_ADVANCE_MS + FADE_HALF}ms` }}
         />
       </div>
 

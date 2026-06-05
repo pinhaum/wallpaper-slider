@@ -3,6 +3,7 @@ import IMAGES from "../data/images.js";
 import Dots from "./Dots.jsx";
 
 const FADE_HALF = 150; // deve ser igual a --t-fade em index.css
+const AUTO_ADVANCE_MS = 30_000;
 
 export default function Slider() {
   const [index, setIndex] = useState(() =>
@@ -52,6 +53,11 @@ export default function Slider() {
     return () => window.removeEventListener("keydown", handler);
   }, [prev, next]);
 
+  useEffect(() => {
+    const timerId = setTimeout(() => next(), AUTO_ADVANCE_MS + FADE_HALF);
+    return () => clearTimeout(timerId);
+  }, [index, next]);
+
   const img = IMAGES[index];
 
   return (
@@ -69,6 +75,11 @@ export default function Slider() {
           <span className="slider-counter">{img.label}</span>
           <span className="slider-title">{img.title}</span>
         </div>
+        <div
+          key={index}
+          className="slider-timer-bar"
+          style={{ "--auto-ms": `${AUTO_ADVANCE_MS + FADE_HALF}ms` }}
+        />
       </div>
 
       <div className="slider-controls">

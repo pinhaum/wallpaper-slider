@@ -187,6 +187,7 @@
   color: var(--gcr-paper);
   text-shadow: 2px 2px 0 var(--gcr-ink);
   letter-spacing: 0.05em;
+  text-decoration: none;
 }
 
 .nav-brand img {

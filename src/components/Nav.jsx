@@ -1,7 +1,12 @@
 export default function Nav() {
   return (
     <nav className="nav">
-      <div className="nav-brand">
+      <a
+        className="nav-brand"
+        href="https://pinhaum.github.io/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <img
           src="/assets/img/terminal.svg"
           alt="gcrepho logo"
@@ -9,10 +14,9 @@ export default function Nav() {
           height={28}
         />
         <span>
-          gcrepho<span className="dot">.</span>dev
+          gcrepho<span className="dot">.</span><span className="cursor blink">_</span>
         </span>
-        <span className="cursor blink">_</span>
-      </div>
+      </a>
       <span className="nav-label">wallpaper slider</span>
     </nav>
   );
